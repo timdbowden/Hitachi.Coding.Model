@@ -45,7 +45,21 @@ namespace Hitachi.Coding.ConsoleApp
 
 
             Console.WriteLine(graThis.ToString());
-            Console.WriteLine(graThis.GetJourneyTime(prtBA, prtNY, prtLiverpool));
+            Console.WriteLine("BA --> NY --> Liverpool: " + graThis.GetJourneyTime(prtBA, prtNY, prtLiverpool).ToString());
+            Console.WriteLine("BA --> Casablanca --> Liverpool: " + graThis.GetJourneyTime(prtBA, prtCasablanca, prtLiverpool).ToString());
+            Console.WriteLine("BA --> Cape Town --> NY --> Liverpool --> Casablanca: " + graThis.GetJourneyTime(prtBA, prtCT, prtNY, prtLiverpool, prtCasablanca).ToString());
+            try
+            {
+                Console.WriteLine("BA --> Cape Town --> Casablanca: " + graThis.GetJourneyTime(prtBA, prtCT, prtCasablanca).ToString());
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine(ex.Message);
+            }
+            
+
+
             Console.ReadLine();
             
 

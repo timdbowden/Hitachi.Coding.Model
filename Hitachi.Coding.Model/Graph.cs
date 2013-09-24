@@ -38,10 +38,32 @@ namespace Hitachi.Coding.Model
             return node; 
         }
               
-        public double GetJourneyTime(params T[] nodes)
+        public double GetJourneyTime(T origin, params T[] nodes)
         {
-            return 7.0;
+            double dblReturn = 0;
+            Node<T> nodStart = GetNodeFromData(origin);
 
+            foreach (T item in nodes)
+            {
+                dblReturn += nodStart.GetJourneyTime(item);
+                nodStart = GetNodeFromData(item);
+            }   
+
+            return dblReturn;
+
+        }
+
+        public Node<T> GetNodeFromData(T data)
+        {
+            foreach (Node<T> item in Nodes)
+            {
+                if (item.Data.Equals(data))
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
 
         #endregion
